@@ -1,0 +1,41 @@
+header {
+  margin: 0 auto;
+  max-height: 200px;
+  max-width: 1300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
+
+  h1 {
+    color: rgba(74, 149, 247, 1);
+  }
+
+  .logo-header {
+    max-width: 100px;
+    max-height: 100px;
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  li {
+    margin-right: 20px;
+
+    a {
+      text-decoration: none;
+      color: rgba(74, 149, 247, 1);
+      //text-decoration: none;
+      cursor: pointer;
+
+      &:hover {
+        color: rgba(47, 85, 135, 1);
+        text-shadow: rgba(28, 57, 94, 1);
+      }
+    }
+  }
+}
