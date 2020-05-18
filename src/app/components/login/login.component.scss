@@ -1,0 +1,23 @@
+.container {
+  margin: 0 auto;
+  max-width: 1300px;
+  width: 100%;
+
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h2 {
+      color: #4a95f7;
+      margin-bottom: 2rem;
+    }
+
+    .form-control {
+      margin-bottom: 1rem;
+      min-width: 250px;
+    }
+  }
+
+}

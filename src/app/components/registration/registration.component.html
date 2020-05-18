@@ -1,1 +1,82 @@
-<p>registration works!</p>
+<div class="container">
+  <mat-vertical-stepper linear #stepper>
+    <mat-step [stepControl]="nameFormGroup" errorMessage="Name is required">
+      <form [formGroup]="nameFormGroup">
+        <ng-template matStepLabel>Fill out your name</ng-template>
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="John" formControlName="name" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="ageFormGroup">
+      <form [formGroup]="ageFormGroup">
+        <ng-template matStepLabel>Fill out your age</ng-template>
+        <mat-form-field>
+          <mat-label>Age</mat-label>
+          <input matInput placeholder="18" formControlName="age">
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="emailFormGroup" errorMessage="Email is required / Not a valid email">
+      <form [formGroup]="emailFormGroup">
+        <ng-template matStepLabel>Fill out your email</ng-template>
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" placeholder="johnDoe@gmail.com"
+                 required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="password1FormGroup" errorMessage="Password is required /
+              Password must be at least 6 characters">
+      <form [formGroup]="password1FormGroup">
+        <ng-template matStepLabel>Fill out your password</ng-template>
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input matInput formControlName="password1" placeholder="12abcQW"
+                 required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="password2FormGroup" errorMessage="Password is required /
+              Password must be at least 6 characters">
+      <form [formGroup]="password2FormGroup">
+        <ng-template matStepLabel>Fill out your password again</ng-template>
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input matInput formControlName="password2" placeholder="12abcQW"
+                 required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+  </mat-vertical-stepper>
+
+</div>
+

@@ -1,0 +1,48 @@
+.container {
+  margin: 1.5rem auto;
+  max-width: 1300px;
+
+  .img-block {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .search-form {
+      margin: 0 auto;
+      min-width: 150px;
+      max-width: 900px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+    .full-width {
+      width: 300px;
+
+      &:first-child {
+        margin-right: 2rem;
+      }
+    }
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .forecast {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .forecast-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-right: 1rem;
+      padding: 0.5rem;
+      border: 1px solid hotpink;
+    }
+  }
+}

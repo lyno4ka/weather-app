@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h2 {
+    color: #ff4081;
+  }
+
+  a {
+    text-decoration: none;
+    color: rgba(74, 149, 247, 1);
+    cursor: pointer;
+    animation: opacity ease-in;
+
+    &:hover {
+      color: rgba(47, 85, 135, 1);
+      opacity: 0.7;
+    }
+  }
+}

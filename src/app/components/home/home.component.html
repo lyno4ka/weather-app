@@ -1,1 +1,33 @@
-<p>home works!</p>
+<div class="container" *ngIf="days">
+  <form class="search-form" [formGroup]="searchForm">
+    <mat-form-field class="field-city">
+      <input type="text"
+             placeholder="Moscow"
+             matInput
+             formControlName="cities"
+             value="Kharkiv"
+             id="city"
+             required
+             [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let city of cities" [value]="city">
+          {{city}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+
+  <h2>City: {{days.city_name}}</h2>
+
+  <div class="forecast" >
+    <div class="forecast-card" *ngFor="let day of days.data" >
+      <span>Day: {{day.datetime | date:'EEEE'}}</span>
+      <span>Date: {{day.datetime | date: 'dd-MM-yyyy'}}</span>
+      <span>Min temperature: {{day.min_temp}} °C</span>
+      <span>Max temperature: {{day.max_temp}} °C</span>
+      <span>Relative humidity: {{day.rh}} %</span>
+      <span>Wind speed: {{day.wind_spd}} m/s</span>
+      <span>Pressure: {{day.pres}} mb</span>
+    </div>
+  </div>
+</div>

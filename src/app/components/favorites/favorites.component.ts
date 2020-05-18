@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-favorites-page',
-  templateUrl: './favorites-page.component.html',
-  styleUrls: ['./favorites-page.component.scss']
+  selector: 'app-favorites',
+  templateUrl: './favorites.component.html',
+  styleUrls: ['./favorites.component.scss']
 })
-export class FavoritesPageComponent implements OnInit {
+export class FavoritesComponent implements OnInit {
 
   constructor() { }
 

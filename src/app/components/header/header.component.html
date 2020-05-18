@@ -1,21 +1,40 @@
 <header>
-
+  <nav>
     <span >
-      <a href="">
+      <a [routerLink]="['/']">
         <img class="logo-header" src="../../../assets/img/logo-header.png" alt="">
       </a>
     </span>
     <h1>Weather in city</h1>
-    <nav>
       <ul>
-        <li><a href="">Home</a></li>
-        <li><a href="">Profile</a></li>
-        <li><a href="">Favorite</a></li>
-        <li><a href="">Login</a></li>
-        <li><a href="">Registration</a></li>
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <a [routerLink]="['/']">
+            <button mat-icon-button color="primary" aria-label="home">
+              <mat-icon>home</mat-icon>
+            </button>
+            <span>Home</span>
+          </a>
+        </li>
+        <li routerLinkActive="active">
+          <a  [routerLink]="['/favorites']">
+            <button mat-icon-button color="accent" aria-label="favorite">
+              <mat-icon>favorite</mat-icon>
+            </button>
+            <span>Favorite</span>
+          </a>
+        </li>
+        <li routerLinkActive="active">
+          <a  [routerLink]="['/profile']">
+            <button mat-icon-button color="primary" aria-label="profile">
+              <mat-icon>portrait</mat-icon>
+            </button>
+            <span>Profile</span>
+          </a>
+        </li>
+        <li routerLinkActive="active"><a [routerLink]="['/registration']">Registration</a></li>
+        <li routerLinkActive="active"><a [routerLink]="['/login']">Login</a></li>
       </ul>
-    </nav>
-
+  </nav>
 </header>
 
 
