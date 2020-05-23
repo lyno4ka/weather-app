@@ -20,6 +20,7 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatDatepickerModule,
     MatInputModule,
     MatNativeDateModule,
+    MatAutocompleteModule,
     MatFormFieldModule,
     MatStepperModule
   ],

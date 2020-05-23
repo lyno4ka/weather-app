@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {WeatherService} from '../../services/weather.service';
-import {IDays} from '../../interfaces/weather.interfaces';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {CityService} from '../../services/city.service';
+import {IData} from '../../interfaces/weatherCity.interfaces';
+
 
 @Component({
   selector: 'app-home',
@@ -11,34 +11,26 @@ import {CityService} from '../../services/city.service';
 })
 
 export class HomeComponent implements OnInit {
-  days: IDays;
+  days: IData;
   searchForm: FormGroup;
-  cities;
 
-  constructor(
-    private weatherService: WeatherService,
+    constructor(
     private fb: FormBuilder,
-    private cityService: CityService
-  ) {
-    this.weatherService.getWeather().subscribe((days: IDays) => {
-      if (!days) {
-        return;
-      }
-
-      console.log(days);
-      this.days = days;
-    });
-
-    this.cityService.getCity().subscribe((city) => {
-      console.log(city);
-      this.cities = city;
-    });
-  }
+    private cityService: CityService) {}
 
   ngOnInit() {
+    this.initForm();
+  }
+
+  initForm() {
     this.searchForm = this.fb.group({
       cities: ['']
     });
   }
 
+  getWeatherByCityName() {
+    this.cityService.getWeatherCity(this.searchForm.get('cities').value).subscribe((data: IData) => {
+      this.days = data;
+    });
+  }
 }

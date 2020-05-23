@@ -1,21 +1,22 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
+import {IData} from '../interfaces/weatherCity.interfaces';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class CityService {
-  // API_KEY = '45f09a6099edbd842601fc2bf8cb434b';
+  // API_KEY = 'ee2eb6e272b04ce7a10132848201905';
 
   constructor(private http: HttpClient) {
   }
 
-  getCity(): Observable<any> {
-    console.log(this.http);
-    // return this.http.get('http://battuta.medunes.net/api/city/jp/search/?city=paris&callback=?&key=45f09a6099edbd842601fc2bf8cb434b');
-
-    return this.http.jsonp('http://battuta.medunes.net/api/city/jp/search/?city=paris&callback=getCity()?&key=45f09a6099edbd842601fc2bf8cb434b', 'callback');
+  getWeatherCity(city: string): Observable<IData> {
+    return this.http.get(`http://api.weatherapi.com/v1/forecast.json?key=ee2eb6e272b04ce7a10132848201905&q=${city}&days=3`);
   }
 }
+
+
+

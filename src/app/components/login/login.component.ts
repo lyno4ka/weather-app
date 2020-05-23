@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {User} from '../../interfaces/user.interfaces';
+import {AuthService} from '../../services/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +19,9 @@ export class LoginComponent {
   password: FormControl = new FormControl('', [Validators.required,
     Validators.minLength(6)]);
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+              private auth: AuthService,
+              private router: Router) {
     this.authorizationForm = fb.group({
       email: this.email,
       password: this.password,
@@ -56,6 +60,10 @@ export class LoginComponent {
     };
 
     console.log(user);
+    this.auth.login(user).subscribe(() => {
+      this.authorizationForm.reset();
+      this.router.navigate(['/']);
+    });
   }
 }
 

@@ -1,33 +1,44 @@
-<div class="container" *ngIf="days">
+<div class="container">
   <form class="search-form" [formGroup]="searchForm">
     <mat-form-field class="field-city">
+      <mat-label>Enter the city</mat-label>
       <input type="text"
-             placeholder="Moscow"
              matInput
              formControlName="cities"
-             value="Kharkiv"
-             id="city"
-             required
-             [matAutocomplete]="auto">
-      <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let city of cities" [value]="city">
-          {{city}}
-        </mat-option>
-      </mat-autocomplete>
+             (change)="getWeatherByCityName()"
+      >
     </mat-form-field>
   </form>
 
-  <h2>City: {{days.city_name}}</h2>
-
-  <div class="forecast" >
-    <div class="forecast-card" *ngFor="let day of days.data" >
-      <span>Day: {{day.datetime | date:'EEEE'}}</span>
-      <span>Date: {{day.datetime | date: 'dd-MM-yyyy'}}</span>
-      <span>Min temperature: {{day.min_temp}} °C</span>
-      <span>Max temperature: {{day.max_temp}} °C</span>
-      <span>Relative humidity: {{day.rh}} %</span>
-      <span>Wind speed: {{day.wind_spd}} m/s</span>
-      <span>Pressure: {{day.pres}} mb</span>
+  <div class="forecast" *ngIf="days; else info">
+    <h2>City: {{ days.location.name}}, country: {{ days.location.country}}</h2>
+    <div class="wrapper-cards">
+      <div class="forecast-card" *ngFor="let day of days.forecast.forecastday">
+        <div class="date">
+          <span>{{day.date | date:'EEEE'}}</span>
+          <span>{{day.date | date: 'dd-MM-yyyy'}}</span>
+        </div>
+        <span>Max temperature: {{day.day.maxtemp_c}} °C</span>
+        <span>Min temperature: {{day.day.mintemp_c}} °C</span>
+        <span>Average temperature: {{day.day.avgtemp_c}} °C</span>
+        <span>Maximum wind speed: {{day.day.maxwind_kph}} km/s</span>
+        <span>Total precipitation:  {{day.day.totalprecip_mm}} mm</span>
+        <span>Average humidity: {{day.day.avghumidity}} %</span>
+        <div class="weather-condition">
+          <span>{{day.day.condition.text}}</span>
+          <img src="{{day.day.condition.icon}}" alt="">
+        </div>
+        <div class="astro">
+          <span>moonrise: {{day.astro.moonrise}}</span>
+          <span>moonset: {{day.astro.moonset}}</span>
+          <span>sunrise: {{day.astro.sunrise}}</span>
+          <span>sunset: {{day.astro.sunset}}</span>
+        </div>
+      </div>
     </div>
   </div>
+
+  <ng-template #info>
+    <p class="text-info">Please enter the city name in the input field and press 'Enter'</p>
+  </ng-template>
 </div>
